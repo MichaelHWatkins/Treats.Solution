@@ -23,7 +23,7 @@ namespace Treats.Controllers
       _userManager = userManager;
       _db = db;
     }
-
+    [AllowAnonymous]
     public async Task<ActionResult> Index()
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -39,16 +39,16 @@ namespace Treats.Controllers
     }
 
     [HttpPost]
-    public async Task<ActionResult> Create(Flavor Flavor, int SweetId)
+    public async Task<ActionResult> Create(Flavor flavor, int sweetId)
     {
         var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         var currentUser = await _userManager.FindByIdAsync(userId);
         flavor.User = currentUser;
         _db.Flavors.Add(flavor);
         _db.SaveChanges();
-        if (SweetId != 0)
+        if (sweetId != 0)
         {
-            _db.SweetFlavor.Add(new SweetFlavor() { SweetId = SweetId, FlavorId = flavor.FlavorId });
+            _db.SweetFlavor.Add(new SweetFlavor() { SweetId = sweetId, FlavorId = flavor.FlavorId });
         }
         _db.SaveChanges();
         return RedirectToAction("Index");
@@ -91,7 +91,7 @@ namespace Treats.Controllers
     public ActionResult DeleteConfirmed(int id)
     {
         var thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
-        _db.Items.Remove(thisFlavor);
+        _db.Flavors.Remove(thisFlavor);
         _db.SaveChanges();
         return RedirectToAction("Index");
     }

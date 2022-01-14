@@ -23,7 +23,7 @@ namespace Treats.Controllers
       _userManager = userManager;
       _db = db;
     }
-
+    [AllowAnonymous]
     public async Task<ActionResult> Index()
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -91,7 +91,7 @@ namespace Treats.Controllers
     public ActionResult DeleteConfirmed(int id)
     {
         var thisSweet = _db.Sweets.FirstOrDefault(sweet => sweet.SweetId == id);
-        _db.Items.Remove(thisSweet);
+        _db.Sweets.Remove(thisSweet);
         _db.SaveChanges();
         return RedirectToAction("Index");
     }
