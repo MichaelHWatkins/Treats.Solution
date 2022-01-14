@@ -1,0 +1,10 @@
+@model Treats.Models.Sweet
+
+<h4>Add a new Sweet</h4>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.SweetName)
+  @Html.TextBoxFor(model => model.SweetName)
+  <input type="submit" value="Add new Sweet" />
+}
+<p>@Html.ActionLink("Show all Sweets", "Index")</p>
