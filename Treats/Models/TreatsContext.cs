@@ -8,7 +8,7 @@ namespace Treats.Models
   {
     public DbSet<Sweet> Sweets { get; set; }
     public DbSet<Flavor> Flavors { get; set; }
-    public DbSet<SweetFlavor> SweetFlavor { get; set; }
+    public DbSet<SweetFlavor> CategoryItem { get; set; }
 
     public TreatsContext(DbContextOptions options) : base(options) { }
 
