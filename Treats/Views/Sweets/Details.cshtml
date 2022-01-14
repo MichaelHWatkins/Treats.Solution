@@ -1,0 +1,24 @@
+@model Treats.Models.Sweet;
+
+<h2>Sweet Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.SweetName): @Html.DisplayFor(model => model.SweetName)</h3>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>This sweet does not contain any flavors</p>
+}
+else
+{
+  <h4>Recipe the sweet contains:</h4>
+  <ul>
+  @foreach(var join in Model.JoinEntities)
+  {
+    <li>@join.Flavor.FlavorName</li>
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Back to Sweets", "Index")</p>
+<p>@Html.ActionLink("Edit Sweet", "Edit", new { id = Model.SweetId })</p>
+<p>@Html.ActionLink("Delete Sweet", "Delete", new { id = Model.SweetId })</p>
