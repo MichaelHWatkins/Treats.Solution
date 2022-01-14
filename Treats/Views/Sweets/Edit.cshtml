@@ -1,0 +1,16 @@
+@model Treats.Models.Sweet
+
+<h2>Edit</h2>
+
+<h4>Edit this Sweet: @Html.DisplayFor(model => model.SweetName)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.SweetId)
+
+  @Html.LabelFor(model => model.SweetName)
+  @Html.EditorFor(model => model.SweetName)
+
+  <input type="submit" value="Save" />
+}
+<p>@Html.ActionLink("Back to list", "Index")</p>
