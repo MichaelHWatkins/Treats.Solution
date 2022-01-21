@@ -5,6 +5,10 @@
 {
   @Html.LabelFor(model => model.FlavorName)
   @Html.TextBoxFor(model => model.FlavorName)
+
+  @Html.Label("Select Sweet")
+  @Html.DropDownList("SweetId")
+
   <input type="submit" value="Add new Flavor" />
 }
 <p>@Html.ActionLink("Show all Flavors", "Index")</p>

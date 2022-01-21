@@ -11,6 +11,9 @@
   @Html.LabelFor(model => model.SweetName)
   @Html.EditorFor(model => model.SweetName)
 
+  @Html.Label("Select Flavor")
+  @Html.DropDownList("FlavorId")
+
   <input type="submit" value="Save" />
 }
 <p>@Html.ActionLink("Back to list", "Index")</p>
