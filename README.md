@@ -46,7 +46,7 @@ _Note: when using the commands listed above, do not include the quotation marks.
 * _No known bugs_
 
 ## Contact Information
-__
+_michaelhugheswatkins@gmail.com_
 
 ## License
 _MIT License: https://opensource.org/licenses/MIT_
